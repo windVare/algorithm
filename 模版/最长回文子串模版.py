@@ -8,7 +8,7 @@ def longest_palindrome(string_):
         for j, y in enumerate(string_[:i + 1]):
             # 初始化
             if i == j:
-                dp[j][i] = False
+                dp[j][i] = True
             # 间距为1
             elif i - j == 1:
                 dp[j][i] = x == y
