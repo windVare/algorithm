@@ -57,7 +57,23 @@ def quick_sort(arr, low, high):
         quick_sort(arr, i + 1, high)
 
 
+def quick_sort_v2(array):
+    if len(array) < 2:
+        return array
+
+    mid = array[0]
+
+    left_array = list(filter(lambda d: d < mid, array))
+    right_array = list(filter(lambda d: d > mid, array))
+
+    left_array = quick_sort_v2(left_array)
+    right_array = quick_sort_v2(right_array)
+    return left_array + [mid] * (len(array) - len(left_array) - len(right_array)) + right_array
+
+
 if __name__ == '__main__':
     array_list = [5, 7, 1, 6, 4, 8, 3, 2]
     quick_sort(array_list, 0, 7)
     print(array_list)
+
+    print(quick_sort_v2(array_list))
